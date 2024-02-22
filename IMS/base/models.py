@@ -35,7 +35,7 @@ class Product(models.Model):
 class Laptop(Product):
     pass
 
-class Desctop(Product):
+class Desktop(Product):
     pass
 
 class Mobile(Product):
