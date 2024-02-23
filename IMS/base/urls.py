@@ -1,12 +1,27 @@
-from django.urls import path, include
-from .views import manufacturer_list, product_list, display_manufacturers, display_laptops, display_desktops, display_mobiles
-
+from django.urls import path
+from .import views
 
 urlpatterns = [
-    path('manufacturer_list/', manufacturer_list, name='manufacturer_list'),
-    path('display_manufacturers/', display_manufacturers, name='display_manufacturers'),
-    path('product_list/', product_list, name='product_list'),
-    path('display_laptops/',display_laptops, name='display_laptops'),
-    path('display_desktops/', display_desktops, name='display_desktops'),
-    path('display_mobiles/', display_mobiles, name='display_mobiles'),    
+    path('manufacturer_list/', views.manufacturer_list, name='manufacturer_list'),
+    path('display_manufacturers/', views.display_manufacturers, name='display_manufacturers'),
+    path('add_manufacturer/', views.add_manufacturer, name='add_manufacturer'),
+    
+
+
+
+    path('product_list/', views.product_list, name='product_list'),
+    path('display_laptops/', views.display_laptops, name='display_laptops'),
+    path('add_laptop/', views.add_laptop, name='add_laptop'),
+
+
+
+
+    path('display_desktops/', views.display_desktops, name='display_desktops'),
+    path('add_desktop/', views.add_desktop, name='add_desktop'),
+
+
+
+
+    path('display_mobiles/', views.display_mobiles, name='display_mobiles'),    
+    path('add_mobile/', views.add_mobile, name='add_mobile'),    
 ]
