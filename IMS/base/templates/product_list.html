@@ -8,23 +8,26 @@
 
 <br>
 <div class="button-group">
-    <a href="#" class="btn btn-primary btn-end" role="button">Laptops</a>
+    <a href="{% url 'display_laptops' %}" class="btn btn-primary btn-end" role="button">Laptops</a>
     <a href="#" class="btn btn-warning btn-sm" role="button"> +</a>
 
-    <a href="#" class="btn btn-primary btn-end" role="button">Desktops</a>
+    <a href="{% url 'display_desktops' %}" class="btn btn-primary btn-end" role="button">Desktops</a>
     <a href="#" class="btn btn-warning btn-sm" role="button"> +</a>
 
-    <a href="#" class="btn btn-primary btn-end" role="button">Mobiles</a>
+    <a href="{% url 'display_mobiles' %}" class="btn btn-primary btn-end" role="button">Mobiles</a>
     <a href="#" class="btn btn-warning btn-sm" role="button"> +</a>
 </div>
 
 <br>
+
+<h4>Currently Viewing {{ header }}</h4>
 <table class="table table-hover">
     <thead>
         <tr>
             <th>id</th>
             <th>Manufacturer</th>
             <th>Model</th>
+            <th>Quantity</th>
             <th>Price</th>
             <th>Status</th>
             <th>Issues</th>
@@ -32,6 +35,17 @@
     </thead>
 
     <tbody>
+        {% for item in items %}
+        <tr>
+            <td>{{ item.pk }}</td>
+            <td>{{ item.manufacturer }}</td>
+            <td>{{ item.type }}</td>
+            <td>{{ item.quantity }}</td>
+            <td>{{ item.price }}</td>
+            <td>{{ item.status }}</td>
+            <td>{{ item.issues }}</td>
+        </tr>
+    {% endfor %}
         
     </tbody>
 </table>
