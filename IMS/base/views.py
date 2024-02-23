@@ -1,4 +1,5 @@
 from django.shortcuts import render, redirect, get_object_or_404
+from django.http import HttpResponseNotFound
 from .models import *
 from .forms import *
 
@@ -69,55 +70,15 @@ def add_manufacturer(request):
     
 
 
-   
+def manufacturer_detail(request, pk):
+    manufacturer = get_object_or_404(Manufacturer, pk=pk)
 
-# def add_laptop(request):
-#     # if request.method == 'POST':
-#     #     form = LaptopForm(request.POST)
+    context = {
+        'manufacturer': manufacturer,
+    }
 
-#     #     if form.is_valid():
-#     #         form.save()
-#     #         return redirect('product_list')
-#     # else:
-#     #     form = LaptopForm()
-#     #     context = {
-#     #         'form': form,
-#     #         'header': 'Laptop'
-#     #     }   
-#     #     return render(request, 'add_new.html', context)   
-
-
-# def add_desktop(request):
-#     # if request.method == 'POST':
-#     #     form = DesktopForm(request.POST)
-
-#     #     if form.is_valid():
-#     #         form.save()
-#     #         return redirect('product_list')
-#     # else:
-#     #     form = DesktopForm()
-#     #     context = {
-#     #         'form': form,
-#     #         'header': 'Desktop'
-#     #     }   
-#     #     return render(request, 'add_new.html', context) 
-
-
-# def add_mobile(request):
-#     # if request.method == 'POST':
-#     #     form = MobileForm(request.POST)
-
-#     #     if form.is_valid():
-#     #         form.save()
-#     #         return redirect('product_list')
-#     # else:
-#     #     form = MobileForm()
-#     #     context = {
-#     #         'form': form,
-#     #         'header': 'Mobile'
-#     #     }   
-#     #     return render(request, 'add_new.html', context) 
-    
+    return render(request, 'manufacturer_detail.html', context)
+       
 
 
 def add_product(request, cls, header):
@@ -146,3 +107,16 @@ def add_desktop(request):
 
 def add_mobile(request):
     return add_product(request, MobileForm, 'Add Mobile')
+
+
+def laptop_detail(request, pk):
+    laptop = get_object_or_404(Laptop, pk=pk)
+    return render(request, 'laptop_detail.html', {'item': laptop})
+
+def desktop_detail(request, pk):
+    desktop = get_object_or_404(Desktop, pk=pk)
+    return render(request, 'desktop_detail.html', {'item': desktop})
+
+def mobile_detail(request, pk):
+    mobile = get_object_or_404(Mobile, pk=pk)
+    return render(request, 'mobile_detail.html', {'item': mobile})

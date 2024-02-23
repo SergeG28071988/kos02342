@@ -8,9 +8,7 @@
 
 <br> 
 <div class="button-group">
-    <a href="{% url 'display_manufacturers' %}" class="btn btn-primary btn-end" role="button">Manufacturers</a>
-   
-    
+    <a href="{% url 'display_manufacturers' %}" class="btn btn-primary btn-end" role="button">Manufacturers</a> 
     <a href="{% url 'add_manufacturer' %}" class="btn btn-warning btn-sm" role="button"> +</a>   
 </div>
 
@@ -22,6 +20,7 @@
             <th>id</th>
             <th>Name</th>
             <th>Country</th>            
+            <th>Detail</th>            
         </tr>
     </thead>
 
@@ -31,6 +30,9 @@
                 <td>{{ manufacturer.pk }}</td>
                 <td>{{ manufacturer.name }}</td>
                 <td>{{ manufacturer.country }}</td>
+                <td>
+                    <a href="{% url 'manufacturer_detail' manufacturer.pk %}" class="btn btn-warning btn-sm" role="button"> Detail</a>
+                </td>
             </tr>
         {% endfor %}
         
