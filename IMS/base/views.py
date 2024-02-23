@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from .models import *
 from .forms import *
 
@@ -66,6 +66,9 @@ def add_manufacturer(request):
             'header': 'Manufacturer'
         }   
         return render(request, 'add_manufacturer.html', context)    
+    
+
+
    
 
 # def add_laptop(request):
