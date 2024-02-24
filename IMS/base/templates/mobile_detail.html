@@ -32,6 +32,8 @@
             </div>
         </div>        
         <a href="{% url 'display_mobiles' %}" class="btn btn-warning" role="button">Back</a>
+        <a href="{% url 'edit_mobile' item.pk %}" class="btn btn-primary">Edit Mobile</a>
+        <a href="{% url 'delete_mobile' item.pk %}" class="btn btn-primary">Delete Mobile</a>
     </div>
 </div>  
 {% endblock %}

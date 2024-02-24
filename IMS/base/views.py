@@ -1,5 +1,4 @@
 from django.shortcuts import render, redirect, get_object_or_404
-from django.http import HttpResponseNotFound
 from .models import *
 from .forms import *
 
@@ -120,3 +119,63 @@ def desktop_detail(request, pk):
 def mobile_detail(request, pk):
     mobile = get_object_or_404(Mobile, pk=pk)
     return render(request, 'mobile_detail.html', {'item': mobile})
+
+
+def edit_product(request, pk, model, cls, header):
+    item = get_object_or_404(model, pk=pk)
+
+    if request.method == "POST":
+        form = cls(request.POST, instance=item)
+        if form.is_valid():
+            form.save()
+            return redirect("product_list")
+
+    else:
+        form = cls(instance=item)
+        context = {
+            'form': form,            
+            'header': header,            
+        }   
+
+        return render(request, 'edit_item.html',  context)
+    
+
+def edit_laptop(request, pk):
+    return edit_product(request, pk, Laptop, LaptopForm, 'Edit Laptop')
+
+def edit_desktop(request, pk):
+    return edit_product(request, pk, Desktop, DesktopForm, 'Edit Desktop')
+
+def edit_mobile(request, pk):
+    return edit_product(request, pk, Mobile, MobileForm, 'Edit Mobile')
+
+
+
+def delete_laptop(request, pk):
+
+    Laptop.objects.filter(id=pk).delete()
+    
+    laptops = Laptop.objects.all()
+
+    context = {
+        'laptops': laptops
+    }
+    return render(request, 'product_list', context)
+
+
+def delete_desktop(request, pk):
+    desktops = get_object_or_404(Desktop, pk=pk)
+    desktops.delete()
+    return redirect("product_list")
+
+
+def delete_mobile(request, pk):
+    mobiles = get_object_or_404(Mobile, pk=pk)
+    mobiles.delete()
+    return redirect("product_list")
+
+
+def delete_manufacturer(request, pk):
+    manufacturers = get_object_or_404(Manufacturer, pk=pk)
+    manufacturers.delete()
+    return redirect("manufacturer_list")

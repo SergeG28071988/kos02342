@@ -32,8 +32,10 @@
             <th>Quantity</th>
             <th>Price</th>
             <th>Status</th>
-            <th>Issues</th>           
-            <th>Detail</th>           
+            <th>Issues</th>            
+            <th>Detail Laptops</th>            
+            <th>Detail Desktops</th>            
+            <th>Detail Mobiles</th>            
         </tr>
     </thead>
 
@@ -46,17 +48,16 @@
             <td>{{ item.quantity }}</td>
             <td>{{ item.price }}</td>
             <td>{{ item.status }}</td>
-            <td>{{ item.issues }}</td>         
-            <td>
-                <a href="{% url 'laptop_detail' item.pk %}" class="btn btn-warning btn-sm" role="button"> Detail</a>
-                <a href="{% url 'desktop_detail' item.pk %}" class="btn btn-warning btn-sm" role="button"> Detail</a>
-                <a href="{% url 'mobile_detail' item.pk %}" class="btn btn-warning btn-sm" role="button"> Detail</a>
-            </td>         
-            </td>         
-        </tr>
-    {% endfor %}
+            <td>{{ item.issues }}</td>  
+                  
+            <td><a href="{% url 'laptop_detail' item.pk %}" class="btn btn-warning" role="button">Detail</a></td>
+ 
+            <td><a href="{% url 'desktop_detail' item.pk %}" class="btn btn-warning" role="button">Detail</a></td>
+
+            <td><a href="{% url 'mobile_detail' item.pk %}" class="btn btn-warning" role="button">Detail</a></td>    
         
+        </tr>
+        {% endfor %}        
     </tbody>
 </table>
-
 {% endblock content %}

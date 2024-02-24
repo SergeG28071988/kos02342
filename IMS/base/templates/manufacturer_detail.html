@@ -21,6 +21,7 @@ Manufacturer Detail
             </div>           
         </div>        
         <a href="{% url 'display_manufacturers' %}" class="btn btn-warning" role="button">Back</a>
+        <a href="{% url 'delete_manufacturer' manufacturer.pk %}" class="btn btn-warning" role="button">Delete</a>
     </div>
 </div> 
 {% endblock %}

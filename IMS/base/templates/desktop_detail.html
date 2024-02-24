@@ -32,6 +32,9 @@
             </div>
         </div>        
         <a href="{% url 'display_desktops' %}" class="btn btn-warning" role="button">Back</a>
+        <a href="{% url 'edit_desktop' item.pk %}" class="btn btn-primary">Edit Desktop</a>
+        <a href="{% url 'delete_desktop' item.pk %}" class="btn btn-primary">Delete Desktop</a>
+
     </div>
 </div>  
 {% endblock %}
